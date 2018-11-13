@@ -1,0 +1,446 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Oct 10 21:14:39 2018
+
+@author: arthurmendes
+
+Working Directory:
+/Users/arthurmendes/Desktop/PythonCourse
+
+Purpose:
+Creat a game for the python course
+
+DocString:
+    
+    A) Introduction:
+    Bon jour! Today might be your last day as a trainee chef, but first, you 
+    will have to go through a series of challenges to prove you are worth to be 
+    called a chef; but be aware, chef Pierre is a little temperamental, and 
+    might change his mind a lot...
+    
+    First: Select the best French dish
+    Second: What is the secret of the perfect sandwich?
+    Third: Answer culinary related questions
+    Forth: Answer a simple question to be called a real Chef!
+
+    B) Known Bugs and/or Errors:
+    None
+"""
+
+
+
+
+from sys import exit
+from random import randint
+
+
+
+def game_start():
+    global player_name
+    global country
+    global favorite_food
+    
+    print("\nBon jour! Welcome to your final test before you become a Chef!")
+    input('<Press any key to continue>\n')
+    
+    print(f"""\n
+My name is Chef Pierre de Lacouir, and I will be your judge. We will go through
+a series of tests to assess your skills
+          """)
+    print("\nJe suis desole, I didn\'t catch your name...")
+    player_name = input("\nInput player name \n>" )
+    
+    print(f"\nVery well {player_name.capitalize()}, we shall begin.")
+    print("\nBut first I would like to know a little more about you")
+    country = input("\nWhere are you from? \n>")
+    
+    if country.lower == 'france' :
+        print("Maginific!")
+        
+    else:
+        print(f"""
+              \n{country.capitalize()}'s cousine is not as good as French... 
+              \nbut that\'s ok...
+              """)
+    input('<Press any key to continue>\n')
+    
+    print("\nAs a chef, you must tell me...")
+    favorite_food = input("\nWhat is your favorite food? \n>")
+    
+    if favorite_food == 'pizza' :
+        print("\nI had enough of you")
+        
+        fail()
+        
+    elif favorite_food != 'pizza':
+        print("\nUhn... interesting choice")
+        
+        input('<Press any key to continue>\n')
+        
+    else:
+        print("\nWe have a problem")
+        
+    print(f"""
+Chef Pierre: We shall begin! For today\'s challenge you will have to complete a
+             series of very simple tests, and in the end of if, we will be able
+             to call you a real chef.
+
+Are you ready to begin?
+          """)
+    input('<Press any key to start>\n')
+    
+    first_round()
+
+
+def first_round():
+    print(f"""
+Chef Pierre: On the first round you will have three chances to answer this
+             question...
+""")
+    input('<Press any key to continue>\n')
+    
+    chances = 3
+    random_dish = randint(0, 3)
+    while chances > 0:
+        
+        print(f"""\n
+Chef Pierre: As any good chef should know, France has the best food in the world...
+
+    Therefore, I would like to know: 
+                 
+    Which of these do you think it's the best French dish?
+    a) Coq au Vin
+    b) Ratatouille
+    c) Beef bourguignon
+    d) Bouillabaisse
+          """)
+        french_dish = input("\n>")
+        french_dish = french_dish.lower()
+        
+        if "a" in french_dish or "coq" in french_dish :
+            if random_dish == 0:
+                print("\nWell done!!")
+                
+                input('<Press any key to continue>\n')
+                second_round()
+                break
+        
+            else:
+                print("\nMaybe not that one...")
+            
+                chances -= 1
+    
+        elif "b" in french_dish or "ratatouille" in french_dish :
+            if random_dish == 1:
+                print("\nWell done!!")
+                
+                input('<Press any key to continue>\n')
+                second_round()
+                break
+        
+            else:
+                print("\nMaybe not that one...")
+            
+                chances -= 1
+                
+        elif "c" in french_dish or "beef" in french_dish :
+            if random_dish == 2:
+                print("\nWell done!!")
+                
+                input('<Press any key to continue>\n')
+                second_round()
+                break
+        
+            else:
+                print("\nMaybe not that one...")
+            
+                chances -= 1
+                
+        elif "d" in french_dish or "bouillabaisse" in french_dish :
+            if random_dish == 3:
+                print("\nWell done!!")
+                
+                input('<Press any key to continue>\n')
+                second_round()
+                break
+        
+            else:
+                print("\nMaybe not that one...")
+            
+                chances -= 1
+        
+        else:
+            print("You must select one of the option: a, b, c or d")
+    
+    fail()
+
+def second_round():
+    print(f"""
+Chef Pierre: Well done {player_name.capitalize()} ! welcome to second round on
+your culinary journey!
+          """)
+    input('<Press any key to continue>\n')
+    
+    
+    chances = 3
+    secret_ingredient = randint(0, 3)
+    while chances > 0:
+        print(f"""
+Chef Pierre: On the second round, you are gonna help me build a 'perfect 
+             sandwich'! So far, I have a toasted french baguette, cream cheese,
+             steak sous-vide with rosemary and thyme and sliced cucumbers.
+             
+    What else should I add?
+    a)Cheese
+    b)Bacon
+    c)Tomatoes
+    d)Nothing, it's already perfect
+    
+""")
+        ingredient = input("\n>")
+        ingredient = ingredient.lower()
+        
+        if "a" in ingredient or "cheese" in ingredient :
+            if secret_ingredient == 0:
+                print("\nWell done!!")
+                
+                input('<Press any key to continue>\n')
+                third_round()
+                break
+        
+            else:
+                print("\nMaybe not that one...")
+            
+                chances -= 1
+    
+        elif "b" in ingredient or "bacon" in ingredient :
+            if secret_ingredient == 1:
+                print("\nWell done!!")
+                
+                input('<Press any key to continue>\n')
+                third_round()
+                break
+        
+            else:
+                print("\nMaybe not that one...")
+            
+                chances -= 1
+                
+        elif "c" in ingredient or "tomatoes" in ingredient :
+            if secret_ingredient == 2:
+                print("\nWell done!!")
+                
+                input('<Press any key to continue>\n')
+                third_round()
+                break
+        
+            else:
+                print("\nMaybe not that one...")
+            
+                chances -= 1
+                
+        elif "d" in ingredient or "nothing" in ingredient :
+            if secret_ingredient == 3:
+                print("\nWell done!!")
+                
+                input('<Press any key to continue>\n')
+                second_round()
+                break
+        
+            else:
+                print("\nMaybe not that one...")
+            
+                chances -= 1
+                
+        elif ingredient == 'lobster soul' :
+            print(f"""
+      ____
+     /  __\
+    |: /---)  \    /   ___
+     \:( _/    \  /   /_  \
+      \  \      \/    \_\::)
+       \_ \   _0""0_   / _/
+         \ \/=  \/  =\/ /
+          \ |  (||)  | /
+           \_\______/_/
+           __//    \\__
+          /__//====\\__\
+       _ //__//====\\__\\ _
+       _ //__//====\\__\\ _
+       _ //   /(  )\   \\ _
+       _ /    /(  )\    \ _
+              |(  )|
+              /    \
+             / /||\ \
+             \:_/\_:/ 
+            
+            THAT IS IT!
+""")
+            input('<Press any key to continue>\n')
+            third_round()
+            break
+        else:
+            print("You must select one of the option: a, b, c or d")
+    
+    fail()
+
+
+def third_round():
+    print(f"""
+Chef Pierre: It has been too easy so far, {player_name.capitalize()}. 
+             Let's make it a little more challeging! {country.capitalize()} 
+             is counting on you to be the next great chef!
+
+          """)
+    input('<Press any key to continue>\n')
+    
+    print(f"""
+Now you will have two chances to answer this culinary related question
+          """)
+    chances = 3
+    while chances > 0:
+        random_question = randint(0,2)
+        if random_question == 0:
+            print(f"""
+
+What is the first thing you should do before you start working with food?
+    a) wash your hands
+    b) measure ingredients
+    c) clean the kitchen
+    d) preheat the oven
+    """)
+            answer_1 = input("\n>")
+            answer_1 = answer_1.lower()  
+            
+            if 'a' in answer_1 or 'wash' in answer_1 :
+                print(f"""
+Chef Pierre: Congrantulations {player_name}!!! One more challenge and you will 
+be a Chef!
+                      
+                """)
+                input('<Press any key to continue>\n')
+                fourth_round()
+                break
+            
+            elif 'a' not in answer_1 or 'wash' not in answer_1:
+                
+                print("Sorry, that is not correct\n")
+                
+                chances -= 1
+                
+        elif random_question == 1:
+            print(f"""
+
+Inadequate cooking (undercooking food) is the leading cause of cross 
+contamination.
+    a) True
+    b) False
+    """)
+            answer_2 = input("\n>")
+            answer_2 = answer_2.lower()     
+                
+            if 'a' in answer_2 or 'true' in answer_2 :
+                print(f"""
+Chef Pierre: Congrantulations {player_name}!!! One more challenge and you will 
+be a Chef!
+                      
+                """)
+                input('<Press any key to continue>\n')
+                fourth_round()
+                break
+            
+            elif 'a' not in answer_2 or 'wash' not in answer_2:
+                
+                print("Sorry, that is not correct\n")
+                
+                chances -= 1
+                
+        elif random_question == 2:
+            print(f"""
+
+If a fire starts in a pan on the stove, you can smother it by covering it.
+
+    a) True
+    b) False
+    """)
+            answer_3 = input("\n>")
+            answer_3 = answer_3.lower()     
+                
+            if 'a' in answer_3 or 'true' in answer_3 :
+                print(f"""
+Chef Pierre: Congrantulations {player_name}!!! One more challenge and you will 
+be a Chef!
+                      
+                """)
+                input('<Press any key to continue>\n')
+                fourth_round()
+                break
+            
+            elif 'a' not in answer_3 or 'wash' not in answer_3:
+                
+                print("Sorry, that is not correct\n")
+                
+                chances -= 1
+                
+                
+        else: 
+            print("there is a bug")    
+                
+                              
+                
+def fourth_round():
+    print(f"""
+Chef Pierre: So close! On this final round, you will have to answer a very
+             a very simple question.
+             
+Are you ready??
+          
+    """)
+    input('<Press any key to continue>\n') 
+    
+    
+    print(f"""
+Chef Pierre: What is your least favorite vegetable?
+    """)
+    vegetable = input("\n>")
+    
+    print(f"""
+          
+Chef Pierre: Congratulations, Chef {player_name.capitalize()}! I am sure 
+everyone in {country.capitalize()} as proud of you as I am! to celebrate we 
+will make {vegetable} {favorite_food}!!!
+    
+          """)
+    input('<Press any key to exit>\n')
+    exit(0)
+         
+        
+def fail():
+    print(f"""
+Oh... I'm sorry {player_name}, you are not worthy to be called a real chef
+             
+""")
+    
+    print(f" Would you like to play again? (Yes/No)")
+    replay = input("> ")
+    replay = replay.lower()
+    
+    
+    if replay == 'yes':
+        game_start()
+        
+    else:
+        print(f"Thanks for playing {player_name}!")
+        exit(0)
+
+###############################################################################
+        #Game Start
+###############################################################################
+        
+game_start()  
+    
+    
+    
+    
+    
